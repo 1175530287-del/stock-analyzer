@@ -257,7 +257,11 @@ async function fetchSectors() {
       return;
     }
     
+    // 板块热度全宽显示，隐藏新闻栏
     resultContent.textContent = data.data;
+    resultContent.style.maxWidth = '100%';
+    document.querySelector('.result-columns').style.display = 'block';
+    document.querySelectorAll('.result-column')[1].style.display = 'none';
     resultDiv.classList.add('show');
     container.classList.add('has-result');
     
@@ -296,6 +300,10 @@ async function analyze() {
     resultContent.textContent = data.analysis;
     resultDiv.classList.add('show');
     container.classList.add('has-result');
+    
+    // 恢复双栏布局
+    resultContent.style.maxWidth = '';
+    document.querySelectorAll('.result-column')[1].style.display = '';
     
     // 同时获取新闻（用返回的股票代码）
     if (data.data && data.data.code) {
