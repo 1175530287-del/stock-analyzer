@@ -490,16 +490,5 @@ def stock_news():
 
 
 if __name__ == '__main__':
-    now = datetime.now(BJT)
-    print(f'🚀 Stock Analyzer 启动 | {now.strftime("%Y-%m-%d %H:%M:%S")}')
-    print(f'   本地访问: http://127.0.0.1:5000')
-    
-    # 获取局域网IP
-    import socket
-    hostname = socket.gethostname()
-    local_ip = socket.gethostbyname(hostname)
-    print(f'   手机访问: http://{local_ip}:5000')
-    print(f'   确保手机和电脑在同一个WiFi下')
-    
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False)
